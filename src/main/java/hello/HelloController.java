@@ -14,7 +14,7 @@ public class HelloController {
 
     @RequestMapping("/kocu")
     public String index(@RequestParam("name") String name) {
-        return "Greetings from " + name;
+        return "Greetings from hot update " + name;
     }
 
 }
