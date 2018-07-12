@@ -44,6 +44,11 @@ targetCompatibility = 1.8
 dependencies {
     compile("org.springframework.boot:spring-boot-devtools")
     compile("org.springframework.boot:spring-boot-starter-web")
+
+    compile group: 'io.prometheus', name: 'simpleclient_hotspot', version: '0.0.26'
+    compile group: 'io.prometheus', name: 'simpleclient_servlet', version: '0.0.26'
+    compile group: 'io.prometheus', name: 'simpleclient', version: '0.0.26'
+
     testCompile("junit:junit")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 
