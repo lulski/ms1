@@ -40,8 +40,8 @@ repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.14
+targetCompatibility = 1.14
 
 dependencies {
     //compile("org.springframework.boot:spring-boot-devtools")

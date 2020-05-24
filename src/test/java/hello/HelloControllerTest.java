@@ -28,4 +28,11 @@ public class HelloControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("Greetings from Spring Boot!")));
     }
+
+    @Test
+    public void getAsyncMethod() throws Exception{
+        mvc.perform(MockMvcRequestBuilders.get("/asyncmethod").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(equalTo("async method ")));
+    }
 }
