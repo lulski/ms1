@@ -1,4 +1,4 @@
-package hello;
+package lulski;
 
 import io.prometheus.client.Collector;
 import io.prometheus.client.CollectorRegistry;

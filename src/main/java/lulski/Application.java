@@ -1,4 +1,5 @@
-package hello;
+package lulski;
+
 
 import java.util.Arrays;
 import java.util.concurrent.Executor;
@@ -11,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"lulski"})
 @EnableAsync
 public class Application {
 

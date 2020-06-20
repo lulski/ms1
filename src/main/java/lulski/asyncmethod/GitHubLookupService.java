@@ -1,4 +1,4 @@
-package hello.asyncmethod;
+package lulski.asyncmethod;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -27,7 +27,7 @@ public class GitHubLookupService {
     User results = restTemplate.getForObject(url, User.class);
 
     // Artificial delay of 1s for demonstration purposes
-    Thread.sleep(1000L);
+    //Thread.sleep(1000L);
     return CompletableFuture.completedFuture(results);
   }
 

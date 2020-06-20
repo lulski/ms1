@@ -1,4 +1,4 @@
-package hello.asyncmethod;
+package lulski.asyncmethod;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
