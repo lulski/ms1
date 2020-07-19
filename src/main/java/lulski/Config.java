@@ -23,8 +23,8 @@ public class Config {
 
 
     @Bean
-    ServletRegistrationBean registerPrometheusExporterServlet() {
-        return new ServletRegistrationBean(new MetricsServlet( metricRegistry), "/metrics");
+    ServletRegistrationBean<MetricsServlet> registerPrometheusExporterServlet() {
+        return new ServletRegistrationBean<MetricsServlet> (new MetricsServlet( metricRegistry), "/metrics");
     }
 
     @Bean
