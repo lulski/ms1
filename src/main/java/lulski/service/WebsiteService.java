@@ -6,11 +6,12 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import lulski.model.NavigationMenuItem;
+import lulski.model.Post;
 
 @Service
 public class WebsiteService {
 
-	List<NavigationMenuItem> navigationMenuItems;
+  List<NavigationMenuItem> navigationMenuItems;
 
 	public List<NavigationMenuItem> getNavigationMenuItems() {
 		NavigationMenuItem item1 = new NavigationMenuItem("home", "/home");
@@ -24,6 +25,12 @@ public class WebsiteService {
     navigationMenuItems.add(item3);
 
 		return navigationMenuItems;
-	}
+  }
+
+  public Post getPostById(){
+
+
+     return null;
+  }
 
 }
