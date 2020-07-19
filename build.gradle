@@ -36,7 +36,10 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
     // Set this dependency if you want to use Hamcrest matching
     compile 'org.hamcrest:hamcrest:2.2'
-	testCompile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.0'
+    testImplementation 'io.rest-assured:rest-assured:4.2.0'
+    testImplementation 'io.rest-assured:json-path:4.2.0'
+    testImplementation 'io.rest-assured:json-schema-validator:4.2.0'
+    testImplementation 'io.rest-assured:xml-path:4.2.0'
 
 }
 
