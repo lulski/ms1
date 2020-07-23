@@ -2,17 +2,24 @@ package lulski.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 
 import lulski.model.db.NavigationMenuItemRepository;
 import lulski.service.BeanUtil;
+import lulski.service.DatabaseSequenceGeneratorService;
 
 public class NavigationMenuItem {
+
+  @Transient
+  public static final String SEQUENCE_NAME = "navigation_menu_item_sequence";
 
   @Id
   private long id;
 
   private String text;
   private String path;
+
+
 
   public NavigationMenuItem(String text, String path) {
     this.setText(text);
@@ -36,11 +43,14 @@ public class NavigationMenuItem {
   }
 
   public int save() {
-    // TODO implement @ID autoincrement
+
 
     NavigationMenuItemRepository navigationMenuItemRepository = BeanUtil.getBean(NavigationMenuItemRepository.class);
-    navigationMenuItemRepository.save(this);
+    DatabaseSequenceGeneratorService databaseSequenceGService = BeanUtil.getBean(DatabaseSequenceGeneratorService.class);
 
+    this.id = databaseSequenceGService.generateSequence(NavigationMenuItem.SEQUENCE_NAME);
+    navigationMenuItemRepository.save(this);
+    //TODO return positive int value when save is successful
     return 0;
   }
 
