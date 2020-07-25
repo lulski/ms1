@@ -1,13 +1,11 @@
 package lulski;
 
 import org.apache.http.HttpStatus;
-import org.hamcrest.Matchers;
+
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.test.context.junit4.SpringRunner;
+
 
 import io.restassured.RestAssured;
 
@@ -18,13 +16,11 @@ import static org.hamcrest.Matchers.*;
 import static io.restassured.module.jsv.JsonSchemaValidator.*;
 
 
-
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment= WebEnvironment.RANDOM_PORT)
-public class WebsiteRestControllerTest {
+public class WebsiteRestControllerTest extends AbstractTest{
 
     @LocalServerPort
     private int port;
+
 
 
 
@@ -34,7 +30,7 @@ public class WebsiteRestControllerTest {
         RestAssured.port = port;
 
 
-        RestAssured.when().get("/api/website/getnavmenu").then()
+        RestAssured.when().get("/api/website/getNavigationMenuItems").then()
         .statusCode(HttpStatus.SC_OK)
         .body(matchesJsonSchemaInClasspath("getnavmenu.json"));
 
