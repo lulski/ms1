@@ -1,13 +1,6 @@
 package lulski.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-
-import lulski.model.db.NavigationMenuItemRepository;
-import lulski.service.BeanUtil;
-import lulski.service.DatabaseService;
-
-public class NavigationMenuItem extends BaseModel{
+public class NavigationMenuItem extends BaseModel {
 
 
 
