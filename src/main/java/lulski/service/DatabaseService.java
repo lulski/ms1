@@ -10,14 +10,15 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lulski.model.BaseModel;
+
 import lulski.model.db.DatabaseSequence;
 
 @Service
 @RequiredArgsConstructor
 public class DatabaseService {
 
-  private final MongoOperations mongoOperations;
   private final MongoRepository mongoRepository;
+  private final MongoOperations mongoOperations;
 
   public long generateSequence(String seqName) {
 
@@ -36,13 +37,17 @@ public class DatabaseService {
     return counter.getSeq();
   }
 
-  public long saveObjectIntoDatabase(BaseModel model) {
+  public BaseModel saveObjectIntoDatabase(BaseModel model) {
 
     model.setId(generateSequence(model.SEQUENCE_NAME));
 
-    mongoRepository.save(model);
-    // TODO return positive int value when save is successful
-    return 0;
+    try {
+      mongoRepository.save(model);
+
+    } catch (Exception e) {
+      System.err.println(">>> failed to save model " + model.toString());
+    }
+    return model;
   }
 
 }

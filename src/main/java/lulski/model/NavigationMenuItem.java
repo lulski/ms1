@@ -2,13 +2,8 @@ package lulski.model;
 
 public class NavigationMenuItem extends BaseModel {
 
-
-
-
   private String text;
   private String path;
-
-
 
   public NavigationMenuItem(String text, String path) {
     SEQUENCE_NAME = "navigation_menu_item_sequence";

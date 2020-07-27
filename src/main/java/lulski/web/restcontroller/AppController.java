@@ -54,10 +54,8 @@ public class AppController {
                     result.append("\n").append(user.get().getBlog()).append("\n\n");
 
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (ExecutionException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             });
@@ -65,7 +63,6 @@ public class AppController {
             return result.toString();
 
         }  catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

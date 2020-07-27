@@ -1,12 +1,14 @@
 package lulski;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Query;
@@ -15,12 +17,20 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import lulski.model.NavigationMenuItem;
 import lulski.model.db.DatabaseSequence;
+import lulski.model.db.NavigationMenuItemRepository;
 import lulski.service.DatabaseService;
 
-public class DatabaseServiceTest {
+
+public class DatabaseServiceTest extends AbstractTest{
 
   MongoOperations mockMongoOperations;
   MongoRepository mockMongoRepository;
+
+  @Autowired
+  NavigationMenuItemRepository navigationMenuItemRepository;
+
+  @Autowired
+  MongoOperations mongoOperations;
 
   @Before
   public void initMock() {
@@ -36,38 +46,54 @@ public class DatabaseServiceTest {
     DatabaseSequence mockDatabaseSequence = new DatabaseSequence();
     mockDatabaseSequence.setSeq(1);
 
-
-    //findAndModify(Query query, UpdateDefinition update, FindAndModifyOptions options, Class<T> entityClass);
-    when(mockMongoOperations.findAndModify(any(Query.class), any(Update.class), any(FindAndModifyOptions.class), any() ))
+    // findAndModify(Query query, UpdateDefinition update, FindAndModifyOptions
+    // options, Class<T> entityClass);
+    when(mockMongoOperations.findAndModify(any(Query.class), any(Update.class), any(FindAndModifyOptions.class), any()))
         .thenReturn(mockDatabaseSequence);
 
-    DatabaseService sequenceGeneratorService = new DatabaseService(
-        mockMongoOperations,mockMongoRepository);
+    DatabaseService sequenceGeneratorService = new DatabaseService(mockMongoRepository, mockMongoOperations);
 
     assertEquals(1, sequenceGeneratorService.generateSequence("random_sequence_name"));
 
   }
 
   @Test
-  public void save_model_object_to_database(){
+  public void save_model_object_to_mock_database() {
 
     DatabaseSequence mockDatabaseSequence = new DatabaseSequence();
     mockDatabaseSequence.setSeq(1);
 
-
-    //findAndModify(Query query, UpdateDefinition update, FindAndModifyOptions options, Class<T> entityClass);
-    when(mockMongoOperations.findAndModify(any(Query.class), any(Update.class), any(FindAndModifyOptions.class), any() ))
+    // findAndModify(Query query, UpdateDefinition update, FindAndModifyOptions
+    // options, Class<T> entityClass);
+    when(mockMongoOperations.findAndModify(any(Query.class), any(Update.class), any(FindAndModifyOptions.class), any()))
         .thenReturn(mockDatabaseSequence);
 
-    DatabaseService sequenceGeneratorService = new DatabaseService(
-        mockMongoOperations,mockMongoRepository);
-
-
-    DatabaseService databaseService = new DatabaseService(mockMongoOperations,mockMongoRepository);
+    DatabaseService mockDatabaseService = new DatabaseService(mockMongoRepository, mockMongoOperations);
     NavigationMenuItem nav1 = new NavigationMenuItem("home", "/home");
+
+    mockDatabaseService.saveObjectIntoDatabase(nav1);
+
+    assertTrue( nav1.id > 0 ,"expected nav1.id is greater than");
+
+  }
+
+  @Test
+  public void save_model_object_to_actual_database() {
+    NavigationMenuItem nav1 = new NavigationMenuItem("home", "/home");
+
+
+    DatabaseService databaseService = new DatabaseService(navigationMenuItemRepository, mongoOperations);
 
     databaseService.saveObjectIntoDatabase(nav1);
 
+  }
+
+  public void update_existing_model_object_to_actual_database() {
+  //TODO https://www.baeldung.com/spring-data-mongodb-tutorial#3-save---update
 
   }
+
+
+
+
 }
