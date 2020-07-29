@@ -1,5 +1,8 @@
 package lulski.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "nav_menu_item")
 public class NavigationMenuItem extends BaseModel {
 
   private String text;
@@ -27,6 +30,9 @@ public class NavigationMenuItem extends BaseModel {
     this.path = path;
   }
 
-
+  @Override
+  public String toString() {
+    return "NavigationMenuItem [text=" + text + ", path=" + path + "]";
+  }
 
 }
