@@ -15,6 +15,11 @@ import lulski.model.db.DatabaseSequence;
 
 @Service
 @RequiredArgsConstructor
+/*
+ * Database service class, not sure why I need this anymore now that I can
+ * override MongoRepository implementation : see
+ * NavigationMenuItemRepositoryImpl, NavigationMenuItemCustomRepository
+ */
 public class DatabaseService {
 
   private final MongoRepository mongoRepository;
@@ -46,6 +51,7 @@ public class DatabaseService {
 
     } catch (Exception e) {
       System.err.println(">>> failed to save model " + model.toString());
+      e.printStackTrace();
     }
     return model;
   }

@@ -80,11 +80,14 @@ public class DatabaseServiceTest extends AbstractTest{
   @Test
   public void save_model_object_to_actual_database() {
     NavigationMenuItem nav1 = new NavigationMenuItem("home", "/home");
-
+    NavigationMenuItem nav2 = new NavigationMenuItem("post", "/post");
+    NavigationMenuItem nav3 = new NavigationMenuItem("photos", "/photos");
 
     DatabaseService databaseService = new DatabaseService(navigationMenuItemRepository, mongoOperations);
-
-    databaseService.saveObjectIntoDatabase(nav1);
+    navigationMenuItemRepository.save(nav1);
+    //databaseService.saveObjectIntoDatabase(nav1);
+    //databaseService.saveObjectIntoDatabase(nav2);
+    //databaseService.saveObjectIntoDatabase(nav3);
 
   }
 
