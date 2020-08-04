@@ -1,7 +1,7 @@
 package lulski.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.MongoOperations;
 
 import lulski.model.NavigationMenuItem;
 
@@ -11,13 +11,12 @@ import lulski.model.NavigationMenuItem;
 public class NavigationMenuItemRepositoryImpl implements NavigationMenuItemCustomRepository {
 
   @Autowired
-  private MongoTemplate mongoTemplate;
+  private MongoOperations mongoOperations;
 
   @Override
   public NavigationMenuItem save(NavigationMenuItem model) {
 
-    System.out.println("saving from custom save()");
-    mongoTemplate.save(model);
+    mongoOperations.save(model);
 
     return model;
   }
