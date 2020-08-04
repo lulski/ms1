@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lulski.model.BaseModel;
-
-import lulski.model.db.DatabaseSequence;
+import lulski.model.DatabaseSequence;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +21,7 @@ import lulski.model.db.DatabaseSequence;
  */
 public class DatabaseService {
 
+  @SuppressWarnings("rawtypes")
   private final MongoRepository mongoRepository;
   private final MongoOperations mongoOperations;
 

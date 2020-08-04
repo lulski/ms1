@@ -1,4 +1,4 @@
-package lulski;
+package lulski.config;
 
 import io.prometheus.client.Collector;
 

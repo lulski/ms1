@@ -1,4 +1,4 @@
-package lulski.model.db;
+package lulski.repository;
 
 import lulski.model.NavigationMenuItem;
 

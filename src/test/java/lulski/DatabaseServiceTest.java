@@ -15,13 +15,12 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
+import lulski.model.DatabaseSequence;
 import lulski.model.NavigationMenuItem;
-import lulski.model.db.DatabaseSequence;
-import lulski.model.db.NavigationMenuItemRepository;
+import lulski.repository.NavigationMenuItemRepository;
 import lulski.service.DatabaseService;
 
-
-public class DatabaseServiceTest extends AbstractTest{
+public class DatabaseServiceTest extends AbstractTest {
 
   MongoOperations mockMongoOperations;
   MongoRepository mockMongoRepository;
@@ -73,7 +72,7 @@ public class DatabaseServiceTest extends AbstractTest{
 
     mockDatabaseService.saveObjectIntoDatabase(nav1);
 
-    assertTrue( nav1.id > 0 ,"expected nav1.id is greater than");
+    assertTrue(nav1.id > 0, "expected nav1.id is greater than");
 
   }
 
@@ -85,18 +84,15 @@ public class DatabaseServiceTest extends AbstractTest{
 
     DatabaseService databaseService = new DatabaseService(navigationMenuItemRepository, mongoOperations);
     navigationMenuItemRepository.save(nav1);
-    //databaseService.saveObjectIntoDatabase(nav1);
-    //databaseService.saveObjectIntoDatabase(nav2);
-    //databaseService.saveObjectIntoDatabase(nav3);
+    // databaseService.saveObjectIntoDatabase(nav1);
+    // databaseService.saveObjectIntoDatabase(nav2);
+    // databaseService.saveObjectIntoDatabase(nav3);
 
   }
 
   public void update_existing_model_object_to_actual_database() {
-  //TODO https://www.baeldung.com/spring-data-mongodb-tutorial#3-save---update
+    // TODO https://www.baeldung.com/spring-data-mongodb-tutorial#3-save---update
 
   }
-
-
-
 
 }

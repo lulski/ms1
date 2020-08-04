@@ -1,9 +1,11 @@
-package lulski.model;
+package lulski.config;
 
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import lulski.model.Post;
 
 @Configuration
 public class PostConfig {

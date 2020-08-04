@@ -1,4 +1,4 @@
-package lulski;
+package lulski.config;
 
 import io.prometheus.client.Collector;
 import io.prometheus.client.CollectorRegistry;
@@ -15,16 +15,14 @@ import org.springframework.context.annotation.Configuration;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Configuration
 @ConditionalOnClass(CollectorRegistry.class)
 public class Config {
     private static final CollectorRegistry metricRegistry = CollectorRegistry.defaultRegistry;
 
-
     @Bean
     ServletRegistrationBean<MetricsServlet> registerPrometheusExporterServlet() {
-        return new ServletRegistrationBean<MetricsServlet> (new MetricsServlet( metricRegistry), "/metrics");
+        return new ServletRegistrationBean<MetricsServlet>(new MetricsServlet(metricRegistry), "/metrics");
     }
 
     @Bean
