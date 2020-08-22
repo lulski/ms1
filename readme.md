@@ -4,8 +4,10 @@
 
 ### How to notes:
 - build the docker image using gradle
->./gradlew bootBuildImage --imageName=lulski/ms1
+> ./gradlew bootBuildImage --imageName=lulski/ms1
 
+- run the docker image
+> docker-compose up
 
 
 - "run mongodb windows 10"*
@@ -15,6 +17,7 @@
 
 >#create index in mongodb collection to prevent duplicate entity
 >db.nav_menu_item.createIndex({"text":1},{unique:true})
+
 
 
 

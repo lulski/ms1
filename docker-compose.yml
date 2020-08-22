@@ -1,0 +1,19 @@
+version: "3"
+services:
+  api:
+    image: lulski/ms1
+    ports:
+      - "8080:8080"
+      - "27017:27017"
+    # depends_on:
+    #   - api-database
+    # networks:
+    #   - test-network
+    environment:
+      # MONGO_INITDB_ROOT_DATABASE: otp
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_DATA_MONGODB_HOST: host.docker.internal
+      #MONGO_URL: mongodb://127.0.0.1:27017/lulski
+# networks:
+#   test-network:
+#     driver: host
