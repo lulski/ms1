@@ -1,9 +1,16 @@
-# Lulski JAVA practice
-## SpringBoot microservice with mongodb
+# Lulski Java practice repo
 
-### Notes
-*"run mongodb windows 10"*
-_"C:\Program Files\MongoDB\Server\4.2\bin\mongod.exe" --dbpath="c:\projects\data\db"_
+### SpringBoot microservice with mongodb
+
+### How to notes:
+- build the docker image using gradle
+>./gradlew bootBuildImage --imageName=lulski/ms1
+
+
+
+- "run mongodb windows 10"*
+
+>_"C:\Program Files\MongoDB\Server\4.2\bin\mongod.exe" --dbpath="c:\projects\data\db"_
 
 
 >#create index in mongodb collection to prevent duplicate entity
@@ -11,7 +18,7 @@ _"C:\Program Files\MongoDB\Server\4.2\bin\mongod.exe" --dbpath="c:\projects\data
 
 
 
-TODO:
+### TODO:
 * find out how to override repository.save(), but still be able to use spring default implementaion of save()
   https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repositories
 
